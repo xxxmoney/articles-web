@@ -8,7 +8,7 @@
         <p class="text-muted text-center mb-5">{{ __('article.by') }} {{ $article->user->name }}</p>
         <div class="row">
             <div class="col-md-8 mx-auto p-4 border">
-                <p class="text-justify">{{ $article->content }}</p>
+                <p class="text-justify">{!! $article->content !!}</p>
               </div>
         </div>
     </div>

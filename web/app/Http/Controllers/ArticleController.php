@@ -8,6 +8,11 @@ use App\Models\Article;
 
 class ArticleController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth')->only(['showEdit', 'showCreate', 'upsert']);
+    }
+
     /**
      * Shows articles previews.
      *
@@ -72,21 +77,22 @@ class ArticleController extends Controller
      */
     public function upsert(Request $request, $id = null)
     {
-        // Get Article
-        $article = Article::find($id);
+        $validatedData = $request->validate([
+            'title' => 'required|string|max:100',
+            'content' => 'required|string',
+        ]);
+        $validatedData['user_id'] = auth()->user()->id;
 
-        // Create Article
-        if (!$article) {
-            $article = new Article();
+        $article = null;
+
+        if ($id) {
+            $article = Article::findOrFail($id);
+            $article->update($validatedData);
+        } else {
+            $article = Article::create($validatedData);
         }
 
-        // Fill Article
-        $article->fill($request->all());
-
-        // Save Article
-        $article->save();
-
-        return redirect()->route('article.show', ['id' => $article->id]);
+        return redirect()->route('article_show', ['id' => $article->id]);
     }
 
 }

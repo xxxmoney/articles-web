@@ -2,11 +2,15 @@
 
 use Illuminate\Support\Facades\Route;
 
-// Get Controller
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\ArticleController;
 
 Auth::routes();
 
+// Home
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
 Route::get('/about', [App\Http\Controllers\HomeController::class, 'about'])->name('about');
+
+// Articles
+Route::get('/articles', [App\Http\Controllers\ArticleController::class, 'index'])->name('articles');
+Route::get('/articles/{id}', [App\Http\Controllers\ArticleController::class, 'show'])->name('article_show');

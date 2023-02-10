@@ -7,7 +7,7 @@
     <div class="d-flex flex-column gap-4">
         @foreach (__('about.texts') as $text)
             <div class="row">
-                <div class="col-md-8 mx-auto p-4 border d-flex">
+                <div class="col-md-8 mx-auto p-4 border d-flex gap-4">
                     <i class="{{ __($text['icon']) }} fs-1 m-auto"></i>
                     <p class="m-0 fs-5 mx-md-5">{{ __($text['content']) }}</p>
                 </div>

@@ -10,7 +10,7 @@
             <div class="col-md-8 mx-auto p-4 border">
                 <p class="text-justify">{!! $article->content !!}</p>
 
-                @auth
+                @if(Auth::user()?->id == $article->user->id)
                     <div class="row mt-2 gap-3">
                         <a href="{{ route('article_show_edit', $article->id) }}" class="btn btn-secondary col">{{ __('article.edit') }}</a>
                         @if($article?->id != null)
@@ -21,7 +21,7 @@
                             </form>
                         @endif
                     </div>
-                @endauth
+                @endif
             </div>
         </div>
     </div>

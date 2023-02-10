@@ -11,5 +11,7 @@ return [
     'content' => 'Content',
     'created_at' => 'Created',
     'updated_at' => 'Updated',
-    'delete' => 'Delete'
+    'delete' => 'Delete',
+    'show_mine' => 'Show mine',
+    'show_all' => 'Show all'
 ];

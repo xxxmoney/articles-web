@@ -3,19 +3,36 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-// Uses Article model
-use App\Models\Article;
 
 class HomeController extends Controller
 {
-    public function index()
+    /**
+     * Creates a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
     {
-        // Gets all articles
-        $articles = Article::all();
-
-        return view('home.index', [
-            'articles' => $articles
-        ]);
+        //$this->middleware('auth');
     }
 
+    /**
+     * Shows the home page.
+     *
+     * @return \Illuminate\Contracts\Support\Renderable
+     */
+    public function index()
+    {
+        return view('home.index');
+    }
+
+    /**
+     * Shows the home page.
+     *
+     * @return \Illuminate\Contracts\Support\Renderable
+     */
+    public function about()
+    {
+        return view('home.about');
+    }
 }

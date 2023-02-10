@@ -75,22 +75,20 @@ class ArticleController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function upsert(Request $request, $id = null)
+    public function upsert(Request $request)
     {
-        $validatedData = $request->validate([
-            'title' => 'required|string|max:100',
-            'content' => 'required|string',
-        ]);
-        $validatedData['user_id'] = auth()->user()->id;
+        $article;
 
-        $article = null;
-
-        if ($id) {
-            $article = Article::findOrFail($id);
-            $article->update($validatedData);
+        if ($request->id) {
+            $article = Article::findOrFail($request->id);
         } else {
-            $article = Article::create($validatedData);
+            $article = new Article();
         }
+
+        $article->title = $request->input('title');
+        $article->content = $request->input('content');
+        $article->user_id = auth()->user()->id;
+        $article->save();
 
         return redirect()->route('article_show', ['id' => $article->id]);
     }

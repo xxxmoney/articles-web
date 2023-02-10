@@ -35,9 +35,12 @@
                     </ul>
 
                     <!-- Right Side Of Navbar -->
-                    <ul class="navbar-nav ms-auto">
+                    <ul class="navbar-nav ms-auto gap-3">
                         <li>
                             <a class="nav-link" href="{{ route('about') }}">{{ __('about.title') }}</a>
+                        </li>
+                        <li>
+                            <a class="nav-link" href="{{ route('articles') }}">{{ __('article.title') }}</a>
                         </li>
 
                         <div class="mx-4 d-flex flex-column justify-content-center">

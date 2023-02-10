@@ -5,8 +5,10 @@
 @section('content')
 <div class="container">
     @auth
-        <div class="row justify-content-center mb-3">
-            <a href="{{ route('article_show_create') }}" class="btn btn-secondary w-25">{{ __('article.create') }}</a>
+        <div class="d-flex flex-row justify-content-center mb-3 gap-2">
+            <a href="{{ route('article_show_create') }}" class="btn btn-secondary">{{ __('article.create') }}</a>
+            <a href="{{ route('articles', ['filter_by_user' => true]) }}" class="btn btn-secondary">{{ __('article.show_mine') }}</a>
+            <a href="{{ route('articles') }}" class="btn btn-secondary">{{ __('article.show_all') }}</a>
         </div>
     @endauth
     <div class="row justify-content-center gap-5">

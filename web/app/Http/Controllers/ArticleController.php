@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
 use App\Models\Article;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 class ArticleController extends Controller
 {
@@ -18,10 +18,18 @@ class ArticleController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function index()
+    public function index(Request $request)
     {
         // Get Articles
-        $articles = Article::all();
+        $articles;
+
+        // Filters by current user if request contains filter_by_user parameter.
+        if ($request->filter_by_user) {
+            $articles = Article::where('user_id', auth()->user()->id)->get();
+        }
+        else {
+            $articles = Article::all();
+        }
 
         return view('article.index', [
             'articles' => $articles
@@ -86,6 +94,10 @@ class ArticleController extends Controller
 
         if ($request->id) {
             $article = Article::findOrFail($request->id);
+            // Checks if user is owner of article.
+            if ($article->user_id != auth()->user()->id) {
+                throw new NotFoundHttpException('You are not owner of the article.');
+            }
         } else {
             $article = new Article();
         }

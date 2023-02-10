@@ -29,6 +29,13 @@
                         </div>
                     @endif
                 </form>
+                @if($article?->id != null)
+                    <form action="{{ route('article_delete_post') }}" method="post" class="mt-1">
+                        @csrf
+                        <input type="hidden" name="id" value="{{ $article->id }}">
+                        <button type="submit" class="btn btn-danger w-100">{{ __('article.delete') }}</button>
+                    </form>
+                @endif
             </div>
         </div>
     </div>

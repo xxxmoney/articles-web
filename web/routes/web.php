@@ -18,3 +18,4 @@ Route::get('/articles/detail/{id}', [App\Http\Controllers\ArticleController::cla
 Route::get('/articles/create', [App\Http\Controllers\ArticleController::class, 'showCreate'])->name('article_show_create');
 Route::get('/articles/edit/{id}', [App\Http\Controllers\ArticleController::class, 'showEdit'])->name('article_show_edit');
 Route::post('/articles/upsert', [App\Http\Controllers\ArticleController::class, 'upsert'])->name('article_upsert');
+Route::post('/articles/delete', [App\Http\Controllers\ArticleController::class, 'delete'])->name('article_delete_post');

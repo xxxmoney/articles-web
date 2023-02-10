@@ -13,6 +13,11 @@
             <div class="col d-flex align-items-start justify-content-end gap-2">
                 @if(Auth::user()?->id == $article->user->id)
                     <a href="{{ route('article_show_edit', $article->id) }}" class="btn btn-secondary">{{ __('article.edit') }}</a>
+                    <form action="{{ route('article_delete_post') }}" method="post">
+                        @csrf
+                        <input type="hidden" name="id" value="{{ $article->id }}">
+                        <button type="submit" class="btn btn-danger">{{ __('article.delete') }}</button>
+                    </form>
                 @endif
             </div>
         </div>

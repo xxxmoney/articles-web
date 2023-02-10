@@ -10,5 +10,6 @@ return [
     'save' => 'Save',
     'content' => 'Content',
     'created_at' => 'Created',
-    'updated_at' => 'Updated'
+    'updated_at' => 'Updated',
+    'delete' => 'Delete'
 ];

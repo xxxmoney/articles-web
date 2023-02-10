@@ -10,7 +10,7 @@ class ArticleController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth')->only(['showEdit', 'showCreate', 'upsert']);
+        $this->middleware('auth')->only(['showEdit', 'showCreate', 'upsert', 'delete']);
     }
 
     /**
@@ -96,6 +96,19 @@ class ArticleController extends Controller
         $article->save();
 
         return redirect()->route('article_show', ['id' => $article->id]);
+    }
+
+    /**
+     * Deletes article.
+     *
+     * @return \Illuminate\Contracts\Support\Renderable
+     */
+    public function delete(Request $request)
+    {
+        $article = Article::findOrFail($request->id);
+        $article->delete();
+
+        return redirect()->route('articles');
     }
 
 }

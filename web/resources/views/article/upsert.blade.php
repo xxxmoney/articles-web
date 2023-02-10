@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', $article->id == null ? __('article.create') : __('article.edit'))
+@section('title', $article?->id == null ? __('article.create') : __('article.edit'))
 
 @section('content')
     <div class="container">
@@ -10,13 +10,13 @@
                     @csrf
                     <div class="form-group">
                         <label for="title">{{ __('article.title') }}</label>
-                        <input type="text" name="title" class="form-control" id="title" value="{{ old('title', $article->title ?? '') }}">
+                        <input type="text" name="title" class="form-control" id="title" value="{{ old('title', $article?->title ?? '') }}">
                     </div>
                     <div class="form-group">
                         <label for="content">{{ __('article.content') }}</label>
-                        <textarea name="content" id="content" class="form-control">{{ old('content', $article->content ?? '') }}</textarea>
+                        <textarea name="content" id="content" class="form-control">{{ old('content', $article?->content ?? '') }}</textarea>
                     </div>
-                    <input type="hidden" name="id" value="{{ $article->id ?? '' }}">
+                    <input type="hidden" name="id" value="{{ $article?->id ?? '' }}">
                     <button type="submit" class="btn btn-primary">{{ __('article.save') }}</button>
                 </form>
             </div>
@@ -25,7 +25,7 @@
 @endsection
 
 @section('scripts')
-   <!-- Include the TinyMCE editor -->
+   <!-- Includes the TinyMCE editor. -->
    <script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
    <script>
        tinymce.init({

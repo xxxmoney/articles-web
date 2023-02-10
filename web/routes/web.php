@@ -15,5 +15,6 @@ Route::get('/about', [App\Http\Controllers\HomeController::class, 'about'])->nam
 // Articles
 Route::get('/articles', [App\Http\Controllers\ArticleController::class, 'index'])->name('articles');
 Route::get('/articles/{id}', [App\Http\Controllers\ArticleController::class, 'show'])->name('article_show');
-Route::get('/articles/upsert/{id}', [App\Http\Controllers\ArticleController::class, 'showUpsert'])->name('article_show_upsert');
+Route::get('/articles/create', [App\Http\Controllers\ArticleController::class, 'showCreate'])->name('article_show_create');
+Route::get('/articles/edit/{id}', [App\Http\Controllers\ArticleController::class, 'showEdit'])->name('article_show_edit');
 Route::post('/articles/upsert', [App\Http\Controllers\ArticleController::class, 'upsert'])->name('article_upsert');

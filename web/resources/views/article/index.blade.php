@@ -4,6 +4,9 @@
 
 @section('content')
 <div class="container">
+    <div class="row">
+        <a href="{{ route('article_show_create') }}" class="btn btn-secondary">{{ __('article.create') }}</a>
+    </div>
     <div class="row justify-content-center gap-5">
         @foreach ($articles as $article)
             <div class="col-md-8">

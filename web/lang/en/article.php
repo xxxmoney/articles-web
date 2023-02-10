@@ -2,12 +2,13 @@
 
 return [
     'title' => 'Articles',
-    'show_detail' => 'Show',
+    'show' => 'Show',
     'by' => 'By',
     'edit' => 'Edit',
     'create' => 'Create',
     'article' => 'Article',
     'save' => 'Save',
-    'title' => 'Title',
-    'content' => 'Content'
+    'content' => 'Content',
+    'created_at' => 'Created',
+    'updated_at' => 'Updated'
 ];

@@ -39,17 +39,29 @@ class ArticleController extends Controller
     }
 
     /**
-     * Shows article upsert form.
+     * Shows article edit form.
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function showUpsert($id = null)
+    public function showEdit($id)
     {
-        // Get Article
+        // Gets Article
         $article = Article::find($id);
 
         return view('article.upsert', [
             'article' => $article
+        ]);
+    }
+
+    /**
+     * Shows article create form.
+     *
+     * @return \Illuminate\Contracts\Support\Renderable
+     */
+    public function showCreate()
+    {
+        return view('article.upsert', [
+            'article' => null
         ]);
     }
 

@@ -13,7 +13,6 @@
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
 
-
     <!-- Scripts -->
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
 </head>
@@ -43,7 +42,7 @@
                             <a class="nav-link" href="{{ route('articles') }}">{{ __('article.title') }}</a>
                         </li>
 
-                        <div class="mx-4 d-flex flex-column justify-content-center">
+                        <div class="mx-4 flex-column justify-content-center d-none d-md-flex">
                             <span>|</span>
                         </div>
 
@@ -80,11 +79,13 @@
             </div>
         </nav>
 
-        <main class="py-4">
+        <main class="px-2 py-4">
             <h1 class="text-center my-5">@yield('title')</h1>
 
             @yield('content')
         </main>
     </div>
+
+    @yield('scripts')
 </body>
 </html>

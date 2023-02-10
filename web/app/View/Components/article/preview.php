@@ -11,44 +11,21 @@ class preview extends Component
      *
      * @var string
      */
-    public $id;
+    public $article;
 
-    /**
-     * Article title.
-     *
-     * @var string
-     */
-    public $title;
-
-    /**
-     * Article content.
-     *
-     * @var string
-     */
-    public $content;
-
-    /**
-     * Article author - user.
-     *
-     * @var string
-     */
-    public $user;
 
     /**
      * Create a new component instance.
      *
      * @return void
      */
-    public function __construct($id, $title, $content, $user, $maxContentSize = 350)
+    public function __construct($article, $maxContentSize = 350)
     {
-        $this->id = $id;
-        $this->title = $title;
-        $this->user = $user;
-        $this->content = $content;
+        $this->article = $article;
 
         // Truncate content
-        if (strlen($this->content) > $maxContentSize) {
-            $this->content = substr($this->content, 0, $maxContentSize) . '...';
+        if (strlen($this->article->content) > $maxContentSize) {
+            $this->article->content = substr($this->article->content, 0, $maxContentSize) . '...';
         }
     }
 

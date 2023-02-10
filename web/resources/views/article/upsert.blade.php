@@ -10,7 +10,7 @@
                     @csrf
                     <div class="form-group">
                         <label for="title">{{ __('article.title') }}</label>
-                        <input type="text" name="title" class="form-control" id="title" value="{{ old('title', $article?->title ?? '') }}">
+                        <input type="text" name="title" class="form-control" id="title" value="{{ old('title', $article?->title ?? '') }}" required>
                     </div>
                     <div class="form-group">
                         <label for="content">{{ __('article.content') }}</label>
@@ -18,6 +18,16 @@
                     </div>
                     <input type="hidden" name="id" value="{{ $article?->id ?? '' }}">
                     <button type="submit" class="btn btn-primary">{{ __('article.save') }}</button>
+
+                    @if ($errors->any())
+                        <div class="alert alert-danger mt-3">
+                            <ul>
+                                @foreach ($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    @endif
                 </form>
             </div>
         </div>

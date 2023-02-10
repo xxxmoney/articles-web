@@ -77,6 +77,11 @@ class ArticleController extends Controller
      */
     public function upsert(Request $request)
     {
+        $request->validate([
+            'title' => 'required',
+            'content' => 'required',
+        ]);
+
         $article;
 
         if ($request->id) {

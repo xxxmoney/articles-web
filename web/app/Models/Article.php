@@ -6,5 +6,15 @@ use Illuminate\Database\Eloquent\Model;
 
 class Article extends Model
 {
-    
+
+    protected $fillable = ['title', 'content', 'id', 'user_id'];
+
+
+    /**
+     * Get the user that crated the article.
+     */
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'user_id', 'id');
+    }
 }

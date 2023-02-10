@@ -9,8 +9,11 @@ Auth::routes();
 
 // Home
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/about', [App\Http\Controllers\HomeController::class, 'about'])->name('about');
 
 // Articles
 Route::get('/articles', [App\Http\Controllers\ArticleController::class, 'index'])->name('articles');
 Route::get('/articles/{id}', [App\Http\Controllers\ArticleController::class, 'show'])->name('article_show');
+Route::get('/articles/upsert/{id}', [App\Http\Controllers\ArticleController::class, 'showUpsert'])->name('article_show_upsert');
+Route::post('/articles/upsert', [App\Http\Controllers\ArticleController::class, 'upsert'])->name('article_upsert');

@@ -37,4 +37,44 @@ class ArticleController extends Controller
             'article' => $article
         ]);
     }
+
+    /**
+     * Shows article upsert form.
+     *
+     * @return \Illuminate\Contracts\Support\Renderable
+     */
+    public function showUpsert($id = null)
+    {
+        // Get Article
+        $article = Article::find($id);
+
+        return view('article.upsert', [
+            'article' => $article
+        ]);
+    }
+
+    /**
+     * Upserts article.
+     *
+     * @return \Illuminate\Contracts\Support\Renderable
+     */
+    public function upsert(Request $request, $id = null)
+    {
+        // Get Article
+        $article = Article::find($id);
+
+        // Create Article
+        if (!$article) {
+            $article = new Article();
+        }
+
+        // Fill Article
+        $article->fill($request->all());
+
+        // Save Article
+        $article->save();
+
+        return redirect()->route('article.show', ['id' => $article->id]);
+    }
+
 }

@@ -9,7 +9,7 @@
                 <form action="{{ route('article_upsert') }}" method="post" class="d-flex flex-column gap-2">
                     @csrf
                     <div class="form-group">
-                        <label for="title">{{ __('article.title') }}</label>
+                        <label for="title">{{ __('article.text_title') }}</label>
                         <input type="text" name="title" class="form-control" id="title" value="{{ old('title', $article?->title ?? '') }}" required>
                     </div>
                     <div class="form-group">

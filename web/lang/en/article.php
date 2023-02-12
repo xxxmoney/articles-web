@@ -2,6 +2,7 @@
 
 return [
     'title' => 'Articles',
+    'text_title' => 'Title',
     'show' => 'Show',
     'by' => 'By',
     'edit' => 'Edit',

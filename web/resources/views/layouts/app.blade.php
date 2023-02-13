@@ -42,9 +42,9 @@
                             <a class="nav-link" href="{{ route('articles') }}">{{ __('article.title') }}</a>
                         </li>
 
-                        <div class="mx-4 flex-column justify-content-center d-none d-md-flex">
+                        <li class="mx-4 flex-column justify-content-center d-none d-md-flex">
                             <span>|</span>
-                        </div>
+                        </li>
 
                         <!-- Authentication Links -->
                         @guest
@@ -80,7 +80,9 @@
         </nav>
 
         <main class="px-2 py-4">
+          @if(!empty($__env->yieldContent('title')))
             <h1 class="text-center my-5">@yield('title')</h1>
+          @endif
 
             @yield('content')
         </main>
